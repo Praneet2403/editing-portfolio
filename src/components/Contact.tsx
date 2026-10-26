@@ -1,5 +1,6 @@
 import { site, whatsappLink } from "@/content/site";
 import { Avatar, Glyphs } from "./Decor";
+import { CopyEmail, EmailLink } from "./EmailLink";
 import { Reveal, Sticker } from "./Reveal";
 
 const links = [
@@ -45,24 +46,29 @@ export function Contact() {
       </Reveal>
 
       <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
-        {links.map((l, i) => (
-          <Sticker key={l.label} rotate={l.rotate} delay={i * 0.08}>
-            <a
-              href={l.href}
-              target={l.href.startsWith("http") ? "_blank" : undefined}
-              rel="noopener noreferrer"
-              className={`heading block w-60 rounded-2xl px-6 py-5 text-center text-lg tracking-normal shadow-[0_10px_24px_-10px_rgb(0_0_0/0.5)] transition-transform hover:scale-105 active:scale-95 sm:w-auto ${l.className}`}
-            >
-              {l.label} ↗
-            </a>
-          </Sticker>
-        ))}
+        {links.map((l, i) => {
+          const className = `heading block w-60 rounded-2xl px-6 py-5 text-center text-lg tracking-normal shadow-[0_10px_24px_-10px_rgb(0_0_0/0.5)] transition-transform hover:scale-105 active:scale-95 sm:w-auto ${l.className}`;
+          return (
+            <Sticker key={l.label} rotate={l.rotate} delay={i * 0.08}>
+              {l.href.startsWith("mailto:") ? (
+                <EmailLink className={className}>{l.label} ↗</EmailLink>
+              ) : (
+                <a
+                  href={l.href}
+                  target={l.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className={className}
+                >
+                  {l.label} ↗
+                </a>
+              )}
+            </Sticker>
+          );
+        })}
       </div>
 
       <Reveal className="mt-8 flex flex-col items-center gap-1 text-center text-sm text-ink/70">
-        <a href={`mailto:${site.contact.email}`} className="font-semibold underline-offset-4 hover:underline">
-          {site.contact.email}
-        </a>
+        <CopyEmail className="cursor-pointer font-semibold underline-offset-4 hover:underline" />
         <a href={`tel:+${site.contact.whatsapp}`} className="font-semibold underline-offset-4 hover:underline">
           {site.contact.phone}
         </a>
