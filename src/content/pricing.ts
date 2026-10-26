@@ -23,5 +23,9 @@ export const included = [
   "Transitions",
   "Color grading",
   "Motion graphics",
+  "Animations",
   "Cinematic effects",
 ];
+
+// Paid sample edit before committing to a full project
+export const trial = { label: "Trial edit", price: "₹200" };

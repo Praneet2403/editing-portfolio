@@ -25,7 +25,7 @@ function Reels() {
     <div>
       <SectionTitle kicker="Short-form · 9:16" title="The Reels" note="swipe →" noteClassName="lg:hidden" />
 
-      <ul className="no-scrollbar mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pt-6 pb-10 sm:px-8 lg:grid lg:grid-cols-3 lg:gap-10 lg:overflow-visible xl:grid-cols-6 xl:gap-6">
+      <ul className="no-scrollbar mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pt-6 pb-10 sm:px-8 lg:grid lg:grid-cols-4 lg:gap-10 lg:overflow-visible">
         {portraitVideos.map((v, i) => (
           <li key={v.id} className="w-[64vw] max-w-72 shrink-0 snap-center lg:w-auto lg:max-w-none">
             <Reveal delay={(i % 3) * 0.08}>
@@ -103,7 +103,7 @@ export function Work() {
   return (
     <section id="work" className="relative z-10 mx-auto max-w-7xl scroll-mt-6 py-16 sm:py-24">
       <Reels />
-      <LongForm />
+      {landscapeVideos.length > 0 && <LongForm />}
     </section>
   );
 }

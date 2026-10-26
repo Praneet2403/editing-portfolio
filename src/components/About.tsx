@@ -80,9 +80,9 @@ export function About() {
             <h3 className="heading text-[5.2vw] sm:text-3xl md:text-2xl lg:text-3xl">Experience</h3>
             <ul className="mt-4 space-y-4">
               {site.experience.map((e) => (
-                <li key={e.period} className="text-xs sm:text-sm">
-                  <p className="heading text-[11px] tracking-normal sm:text-xs">{e.period}</p>
-                  <p className="mt-1 font-bold">{e.title}</p>
+                <li key={e.title} className="text-xs sm:text-sm">
+                  {e.period && <p className="heading mb-1 text-[11px] tracking-normal sm:text-xs">{e.period}</p>}
+                  <p className="font-bold">{e.title}</p>
                   <p className="text-ink/60">{e.org}</p>
                 </li>
               ))}

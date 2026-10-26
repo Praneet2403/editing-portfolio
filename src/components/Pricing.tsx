@@ -1,4 +1,4 @@
-import { included, pricing } from "@/content/pricing";
+import { included, pricing, trial } from "@/content/pricing";
 import { whatsappLink } from "@/content/site";
 import { Glyphs, Tape } from "./Decor";
 import { Reveal, Sticker } from "./Reveal";
@@ -58,6 +58,25 @@ export function Pricing() {
           </Reveal>
         ))}
       </div>
+
+      <Reveal className="mt-10">
+        <div className="flex flex-col items-start gap-4 rounded-2xl border-2 border-dashed border-ink/40 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+          <div>
+            <p className="font-hand text-xl text-ink/60">Not sure yet? Test me first.</p>
+            <p className="heading mt-1 text-2xl tracking-[-0.02em] sm:text-3xl">
+              {trial.label} <span className="text-accent">{trial.price}</span>
+            </p>
+          </div>
+          <a
+            href={whatsappLink(`Hi! I'd like a ${trial.price} trial edit.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="heading shrink-0 rounded-full bg-ink px-6 py-3.5 text-xs tracking-normal text-paper-light transition-transform active:scale-95 sm:text-sm"
+          >
+            Book a trial edit
+          </a>
+        </div>
+      </Reveal>
 
       <Reveal className="mt-14">
         <div className="flex items-center gap-3">

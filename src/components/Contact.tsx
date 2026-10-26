@@ -21,6 +21,12 @@ const links = [
     className: "bg-paper-light text-ink border-2 border-ink",
     rotate: -1,
   },
+  {
+    label: "Call",
+    href: `tel:+${site.contact.whatsapp}`,
+    className: "bg-ink text-paper-light",
+    rotate: 3,
+  },
 ];
 
 export function Contact() {
@@ -38,7 +44,7 @@ export function Contact() {
         </p>
       </Reveal>
 
-      <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
+      <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
         {links.map((l, i) => (
           <Sticker key={l.label} rotate={l.rotate} delay={i * 0.08}>
             <a
@@ -52,6 +58,16 @@ export function Contact() {
           </Sticker>
         ))}
       </div>
+
+      <Reveal className="mt-8 flex flex-col items-center gap-1 text-center text-sm text-ink/70">
+        <a href={`mailto:${site.contact.email}`} className="font-semibold underline-offset-4 hover:underline">
+          {site.contact.email}
+        </a>
+        <a href={`tel:+${site.contact.whatsapp}`} className="font-semibold underline-offset-4 hover:underline">
+          {site.contact.phone}
+        </a>
+        <span className="text-xs text-ink/50">Call or WhatsApp — same number</span>
+      </Reveal>
 
       <footer className="mt-20 flex flex-col items-center gap-4 border-t border-ink/15 pt-8 text-center sm:flex-row sm:justify-between">
         <div className="flex items-center gap-3">

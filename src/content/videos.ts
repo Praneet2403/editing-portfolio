@@ -13,17 +13,26 @@ export type Video = {
 };
 
 export const videos: Video[] = [
-  { id: "reel-01", title: "Fashion drop teaser", category: "Brand reel", orientation: "portrait", duration: "00:28" },
-  { id: "reel-02", title: "Café opening day", category: "Local business", orientation: "portrait", duration: "00:45" },
-  { id: "reel-03", title: "Fitness transformation", category: "Creator", orientation: "portrait", duration: "00:30" },
-  { id: "reel-04", title: "Skincare routine", category: "UGC ad", orientation: "portrait", duration: "00:22" },
-  { id: "reel-05", title: "Travel montage", category: "Cinematic", orientation: "portrait", duration: "00:58" },
-  { id: "reel-06", title: "Podcast clip", category: "Talking head", orientation: "portrait", duration: "00:40" },
+  {
+    id: "reel-01",
+    title: "Class 12 ke baad",
+    category: "Creator",
+    orientation: "portrait",
+    duration: "01:11",
+    src: "/videos/reel-01.mp4",
+    poster: "/posters/reel-01.jpg",
+  },
+  {
+    id: "reel-02",
+    title: "Internship report 2026",
+    category: "Brand reel",
+    orientation: "portrait",
+    duration: "01:04",
+    src: "/videos/reel-02.mp4",
+    poster: "/posters/reel-02.jpg",
+  },
 
-  { id: "long-01", title: "YouTube explainer", category: "YouTube", orientation: "landscape", duration: "12:40" },
-  { id: "long-02", title: "Wedding highlight film", category: "Cinematic", orientation: "landscape", duration: "06:15" },
-  { id: "long-03", title: "Podcast episode", category: "Podcast", orientation: "landscape", duration: "48:02" },
-  { id: "long-04", title: "Brand documentary", category: "Commercial", orientation: "landscape", duration: "04:30" },
+  // Long-form (orientation: "landscape") goes here; the section stays hidden while there are none.
 ];
 
 export const portraitVideos = videos.filter((v) => v.orientation === "portrait");
