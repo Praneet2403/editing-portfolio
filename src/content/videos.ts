@@ -9,10 +9,21 @@ export type Video = {
   orientation: "portrait" | "landscape";
   duration: string;
   src?: string;
+  // YouTube video ID; plays in YouTube's player instead of `src`, thumbnail comes from YouTube if no poster
+  youtube?: string;
   poster?: string;
 };
 
 export const videos: Video[] = [
+  {
+    id: "reel-03",
+    title: "New Delhi",
+    category: "Cinematic",
+    orientation: "portrait",
+    duration: "00:15",
+    src: "/videos/reel-03.mp4",
+    poster: "/posters/reel-03.jpg",
+  },
   {
     id: "reel-01",
     title: "Class 12 ke baad",
@@ -32,7 +43,14 @@ export const videos: Video[] = [
     poster: "/posters/reel-02.jpg",
   },
 
-  // Long-form (orientation: "landscape") goes here; the section stays hidden while there are none.
+  {
+    id: "long-01",
+    title: "Zero to 95% in Class 10",
+    category: "YouTube",
+    orientation: "landscape",
+    duration: "18:18",
+    youtube: "L6ex-TDWGz0",
+  },
 ];
 
 export const portraitVideos = videos.filter((v) => v.orientation === "portrait");

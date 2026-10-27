@@ -31,18 +31,31 @@ export function VideoCard({ video, index }: { video: Video; index: number }) {
   const [playing, setPlaying] = useState(false);
   const portrait = video.orientation === "portrait";
   const label = `${portrait ? "REEL" : "CUT"} ${String(index + 1).padStart(2, "0")}`;
+  const playable = Boolean(video.src || video.youtube);
+  const poster = video.poster ?? (video.youtube && `https://i.ytimg.com/vi/${video.youtube}/maxresdefault.jpg`);
 
   const play = () => {
-    if (!video.src) return;
+    if (!playable) return;
     setPlaying(true);
-    requestAnimationFrame(() => ref.current?.play());
+    if (!video.youtube) requestAnimationFrame(() => ref.current?.play());
   };
 
   return (
     <div
       className={`relative overflow-hidden bg-ink ${portrait ? "aspect-[9/16]" : "aspect-video"}`}
     >
-      {video.src && playing ? (
+      {video.youtube && playing ? (
+        // YouTube's player only loads once tapped, so the page never pays for it up front
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${video.youtube}?autoplay=1&rel=0&playsinline=1`}
+          title={video.title}
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          allowFullScreen
+          // YouTube refuses to play (error 153) without a referrer
+          referrerPolicy="strict-origin-when-cross-origin"
+          className="absolute inset-0 h-full w-full border-0"
+        />
+      ) : video.src && playing ? (
         <video
           ref={ref}
           src={video.src}
@@ -57,13 +70,13 @@ export function VideoCard({ video, index }: { video: Video; index: number }) {
         <button
           type="button"
           onClick={play}
-          disabled={!video.src}
-          aria-label={video.src ? `Play ${video.title}` : `${video.title} — video coming soon`}
+          disabled={!playable}
+          aria-label={playable ? `Play ${video.title}` : `${video.title} — video coming soon`}
           className="group absolute inset-0 text-left text-white"
         >
-          {video.poster ? (
+          {poster ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={video.poster} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+            <img src={poster} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
           ) : (
             <span className={`absolute inset-0 bg-gradient-to-br ${placeholderTones[index % placeholderTones.length]}`}>
               <span className="absolute inset-0 opacity-30 [background-image:repeating-linear-gradient(0deg,rgb(255_255_255/0.06)_0_1px,transparent_1px_3px)]" />
@@ -88,7 +101,7 @@ export function VideoCard({ video, index }: { video: Video; index: number }) {
             </span>
           </span>
 
-          {!video.src && (
+          {!playable && (
             <span className="absolute inset-x-0 top-[62%] text-center font-mono text-[10px] tracking-[0.2em] text-white/50 uppercase">
               Video coming soon
             </span>
