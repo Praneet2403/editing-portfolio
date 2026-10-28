@@ -1,8 +1,8 @@
 // Everything personal lives here — edit this file to make the site yours.
 
 export const site = {
-  name: "Your Name",
-  roles: ["Video Editor"],
+  name: "24fps",
+  roles: ["Video Editing"],
   year: "2026",
   tagline: "Reels that stop the scroll. Long-form that keeps them watching.",
 
@@ -14,10 +14,10 @@ export const site = {
     sticker: { src: "/avatar-sticker.png", width: 1100, height: 1513 },
   },
 
-  intro: "Hi, I'm Your Name.",
+  intro: "Hi, we're 24fps.",
   bio: [
-    "I cut videos that feel fast, clean and intentional — from 15-second hooks to 20-minute YouTube deep dives.",
-    "My workflow is built for speed, so you get fast turnarounds without cutting corners — sharp pacing, clean captions, sound design and colour in every edit.",
+    "We cut videos that feel fast, clean and intentional — from 15-second hooks to 20-minute YouTube deep dives.",
+    "Our workflow is built for speed, so you get fast turnarounds without cutting corners — sharp pacing, clean captions, sound design and colour in every edit.",
     "Currently editing for creators, brands and small businesses across India and beyond.",
   ],
 
@@ -36,7 +36,7 @@ export const site = {
   ] as { period?: string; title: string; org: string }[],
 
   // Words that travel around the black strip
-  marquee: ["Portfolio", "2026", "Video Editor"],
+  marquee: ["Portfolio", "2026", "Video Editing"],
 
   contact: {
     // Country code + number, digits only (used for wa.me links)

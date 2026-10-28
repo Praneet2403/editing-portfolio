@@ -100,7 +100,7 @@ export function Hero() {
             href="#work"
             className="heading rounded-full bg-ink px-5 py-3 text-xs tracking-normal text-paper-light transition-transform active:scale-95 sm:text-sm"
           >
-            See my work
+            See our work
           </a>
           <a
             href="#rates"

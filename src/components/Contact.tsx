@@ -41,7 +41,7 @@ export function Contact() {
           it <span className="text-accent">cut.</span>
         </h2>
         <p className="mx-auto mt-5 max-w-sm text-ink/70">
-          Send your raw clips and a reference you love. I&apos;ll reply within a day with a plan and a quote.
+          Send your raw clips and a reference you love. We&apos;ll reply within a day with a plan and a quote.
         </p>
       </Reveal>
 
